@@ -1,0 +1,271 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/images/favicon.png' %}">
+    <title>SHIV WIRE-CUT</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'vendors/perfect-scrollbar/css/perfect-scrollbar.css' %}" rel="stylesheet">
+    <!-- This page CSS -->
+    <!-- chartist CSS -->
+    <link href="{% static 'vendors/morrisjs/morris.css' %}" rel="stylesheet">
+    <link href="{% static 'vendors/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/basic.css' %}" rel="stylesheet">
+    <!--c3 CSS -->
+    <link href="{% static 'vendors/c3-master/c3.min.css' %}" rel="stylesheet">
+	<!-- flot css -->
+    <link href="{% static 'css/pages/float-chart.css' %}" rel="stylesheet">
+    <!--Toaster Popup message CSS -->
+    <link href="{% static 'vendors/toast-master/css/jquery.toast.css' %}" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{% static 'css/master-stylesheet.css' %}" rel="stylesheet">
+    <!-- You can change the theme colors from here -->
+    <link href="{% static 'css/colors/default.css' %}" id="theme" rel="stylesheet">
+    <link href="{% static 'vendors/sweetalert/sweetalert.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'vendors/wizard/steps.css' %}" rel="stylesheet">
+    <!-- Footable CSS -->
+    <link href="{% static 'vendors/footable/css/footable.core.css' %}" rel="stylesheet">
+    <link href="{% static 'vendors/bootstrap-select/bootstrap-select.min.css' %}" rel="stylesheet" />
+    <!-- page css -->
+    <link href="{% static 'css/pages/footable-page.css' %}" rel="stylesheet">
+
+    <link href="{% static 'vendors/dropify/dist/css/dropify.min.css' %}" rel="stylesheet" >
+    <link href="{% static 'vendors/bootstrap-tagsinput/dist/bootstrap-tagsinput.css' %}" rel="stylesheet" />
+    <link href="{% static 'vendors/bootstrap-switch/bootstrap-switch.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendors/product-slider/product-slider.css' %}" rel="stylesheet" type="text/css" >
+    <link src="{% static 'css/dataTables.min.css' %}" rel="stylesheet" type="text/css"/> 
+    <!-- Popup CSS -->
+    <link href="{% static 'vendors/Magnific-Popup-master/dist/magnific-popup.css' %}" rel="stylesheet">
+    <!-- page css -->
+    <link href="{% static 'css/pages/user-card.css' %}" rel="stylesheet">
+
+</head>
+{% block css %}
+{% endblock %}
+<style>
+    .abc{
+        font-size:medium;
+        color: blue;
+        text-underline-position: unset;
+    }
+    .ab{
+        position: fixed;
+        right:3%;
+        bottom: 10px;
+    }
+    .ex {
+        width: 600px;
+        height: 150px;
+        overflow: auto;
+        text-align: justify;
+        padding: 20px;
+    } 
+    .ff{
+
+        line-height: 1 !important;
+        }
+     /* .ss{
+        padding: 0 !important;
+     }    */
+    .select {
+    border: none;
+    outline: none;
+    scroll-behavior: smooth;
+}
+
+</style>
+<body class="fix-header card-no-border fix-sidebar">
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <div class="loader">
+      <div class="lds-roller">
+	  <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <header class="topbar">
+            <nav class="navbar top-navbar navbar-expand-md navbar-light">
+                <!-- ============================================================== -->
+                <!-- Logo -->
+                <!-- ============================================================== -->
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="index.html">
+                        <!-- Logo icon --><b>
+                            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+                            <!-- Dark Logo icon -->
+                            <img src="{% static 'assets/images/logo-light-icon.png' %}" alt="homepage" class="dark-logo" />
+                            <!-- Light Logo icon -->
+                            <img src="{% static 'assets/images/logo-light-icon.png' %}" alt="homepage" class="light-logo" />
+                        </b>
+                        <!--End Logo icon -->
+                        <!-- Logo text --><span>
+                         <!-- dark Logo text -->
+                         <img src="{% static 'assets/images/logo-light-text.png' %}" alt="homepage" class="dark-logo" />
+                         <!-- Light Logo text -->    
+                         <img src="{% static 'assets/images/logo-light-text.png' %}" class="light-logo" alt="homepage" /></span> </a>
+                </div>
+                <div class="navbar-collapse">
+                    <!-- ============================================================== -->
+                    <!-- toggle and nav items -->
+                    <!-- ============================================================== -->
+                    <ul class="navbar-nav mr-auto">
+                        <!-- This is  -->
+                        <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up waves-effect waves-dark" href="javascript:void(0)"><i class="sl-icon-menu"></i></a> </li>
+                        <li class="nav-item"> <a class="nav-link sidebartoggler hidden-sm-down waves-effect waves-dark" href="javascript:void(0)"><i class="sl-icon-menu"></i></a> </li>
+                    </ul>
+                   
+                            </div>
+                        </li>
+         </nav>
+        </header>
+        <!-- ============================================================== -->
+        <!-- End Topbar header -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <aside class="left-sidebar">
+            <!-- Sidebar scroll-->
+            <div class="scroll-sidebar">
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav">
+                    	<li class="nav-small-cap">MAIN</li>
+                        <li> <a class="has-arrow waves-effect waves-dark" href="#"><i class="mr-10 fa fa-party"></i>PARTIE</a>
+                            <ul>
+                                <li><a href="/formm/">ADD PARTIE</a></li>
+                            </ul>
+                        </li>    
+                        <li> <a class="has-arrow waves-effect waves-dark" href="#"><i class="mr-10 fa fa-party"></i>INVOICE</a>
+                            <ul>
+                                <li><a href="/invoicee/">new invoice</a></li>
+                            </ul>
+                        </li>   
+                    </ul>
+                </nav>
+                <!-- End Sidebar navigation -->
+            </div>
+            <!-- End Sidebar scroll-->
+        </aside>
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+            {% block main %}
+            {% endblock %}                   
+            </div>
+                
+            </div>
+          </div>
+       </div>
+    </div>
+
+  
+
+    
+   
+    
+    
+   
+
+    
+    <script src="{% static 'vendors/jquery/jquery.min.js' %}"></script>
+    <!-- Bootstrap popper Core JavaScript -->
+    <script src="{% static 'js/jquery.PrintArea.js' %}" type="text/JavaScript"></script>
+
+    <script src="{% static 'js/pdfmake.min.js' %}"></script>
+    <script src="{% static 'vendors/bootstrap/js/popper.min.js' %}"></script>
+    <script src="{% static 'vendors/bootstrap/js/bootstrap.min.js' %}"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="{% static 'vendors/ps/perfect-scrollbar.jquery.min.js' %}"></script>
+    <!--Wave Effects -->
+    <script src="{% static 'js/waves.js' %}"></script>
+    <!--Menu sidebar -->
+    <script src="{% static 'js/sidebarmenu.js' %}"></script>
+    <!--Custom JavaScript -->
+    <script src="{% static 'js/custom.min.js' %}"></script>    
+    <!--morris JavaScript -->
+    <script src="{% static 'vendors/raphael/raphael-min.js' %}"></script>
+    <script src="{% static 'vendors/morrisjs/morris.min.js' %}"></script>
+    <!--c3 JavaScript -->
+    <script src="{% static 'vendors/d3/d3.min.js' %}"></script>
+    <script src="{% static 'vendors/c3-master/c3.min.js' %}"></script>
+    <!-- Popup message jquery -->
+    <script src="{% static 'vendors/toast-master/js/jquery.toast.js' %}"></script>
+    <!--Sparkline JavaScript -->
+    <script src="{% static 'vendors/sparkline/jquery.sparkline.min.js' %}"></script>
+    <!-- Chart JS -->
+    
+    <!-- ============================================================== -->
+    <!-- Style switcher -->
+    <!-- ============================================================== -->
+    <script src="{% static 'vendors/styleswitcher/jQuery.style.switcher.js ' %}"></script>
+    <!-- This is data table -->
+    <script src="{% static 'vendors/datatables/jquery.dataTables.min.js' %}"></script>
+    <!-- start - This is for export functionality only -->
+    <script src="{% static 'js/dataTables.buttons.min.js' %}"></script>
+    <script src="{% static 'js/buttons.flash.min.js' %}"></script>
+    <script src="{% static 'js/jszip.min.js' %}"></script>
+    <script src="{% static 'js/pdfmake.min.js' %}"></script>
+    <script src="{% static 'js/vfs_fonts.js' %}"></script>
+    <script src="{% static 'js/buttons.html5.min.js' %}"></script>
+    <script src="{% static 'js/buttons.print.min.js' %}"></script>
+    <script src="{% static 'vendors/sweetalert/sweetalert.min.js' %}"></script>
+    <!--stickey kit -->
+    <script src="{% static 'vendors/sticky-kit-master/dist/sticky-kit.min.js' %}"></script>    
+    <!--Custom JavaScript -->
+    <script src="{% static 'vendors/moment/min/moment.min.js' %}"></script>
+    <script src="{% static 'vendors/wizard/jquery.steps.min.js' %}"></script>
+    <script src="{% static 'vendors/wizard/jquery.validate.min.js' %}"></script>
+    <!-- Sweet-Alert  -->    
+    <script src="{% static 'vendors/wizard/steps.js' %}"></script>
+    <!-- ============================================================== -->
+    <!-- Style switcher -->
+    <!-- Footable -->
+    <script src="{% static 'vendors/footable/js/footable.all.min.js' %}"></script>
+    <!--FooTable init-->
+    <script src="{% static 'js/footable-init.js' %}"></script>
+   
+    <!-- Magnific popup JavaScript -->
+    <script src="{% static 'vendors/Magnific-Popup-master/dist/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'vendors/Magnific-Popup-master/dist/jquery.magnific-popup-init.js' %}"></script>
+    <!-- ============================================================== -->
+    <script src="{% static 'vendors/product-slider/product-slider.js' %}"></script>
+    <script src="{% static 'vendors/product-slider/product-slider.init.js' %}"></script>
+    <script src="{% static 'vendors/dropify/dist/js/dropify.min.js' %}"></script>
+    <script src="{% static 'vendors/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js' %}"></script>
+    <script src="{% static 'vendors/bootstrap-switch/bootstrap-switch.min.js' %}"></script>
+    <script src="{% static 'vendors/styleswitcher/jQuery.style.switcher.js' %}"></script>   
+   <script>    
+    $(function() {
+        $("#print").on('click', function() {
+            var mode = 'iframe'; //popup
+            var close = mode == "popup";
+            var options = {
+                mode: mode,
+                popClose: close
+            };
+            $("div.printableArea").printArea(options);
+        });
+    });    
+    </script>
+{% block script %}
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,361 @@
+{% extends 'index.html'%}
+{% block main %}
+{% load static %}
+{% block script %}
+<script src="{% static 'partie/invoice.js' %}"></script>
+{% endblock %}
+<div class="row">
+  <div class="col-md-12">
+    <div class="card card-body text-dark printableArea">
+      <div class="col-md-12">
+        <table class="table table-bordared ff" id="abc">
+          <thead>
+            <tr>
+              <th class="text-center font-bold border" colspan="4">TAX INVOICE</th>
+            </tr>
+          </thead>
+          <tbody class="table-bordered">
+            <tr>
+              <td rowspan="4" width="5%">M/S</td>
+              <td rowspan="4" width="45%"><b>{{data.name}}</b></br>
+                <p>{{data.address}}</p>
+              </td>
+              <td width="20%">INVOICE NO:</td>
+              <td width="20%">{{data.id}}</td>
+            </tr>
+            <tr>
+              <td>INVOICE DATE:</td>
+              <td>{{data.date}}</td>
+            </tr>
+            <tr>
+              <td>CHALLAN NO:</td>
+              <td>-</td>
+            </tr>
+
+            <tr>
+              <td>CHALLAN DATE:</td>
+              <td>-</td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+      </table>
+      <div class="col-md-12">
+        <table class="table table-bordered">
+          <tbody class="table table-bordered">
+            <tr>
+              <td width="10%">
+                GSTIN:
+              </td>
+              <td width="20%">{{data.GST_NO}} </td>
+              <td width="10%">
+                STATE CODE
+              </td>
+              <td width="20%">{{data.state_code}} </td>
+              <td width="10%">
+                P.O NO:
+              </td>
+              <td width="20%"> </td>
+            </tr>
+            <tr>
+              <td width="10%">
+                Transport:
+              </td>
+              <td width="20%"> </td>
+              <td width="10%">
+                L.R NO
+              </td>
+              <td width="20%"> </td>
+              <td width="10%">
+                L.R date
+              </td>
+              <td width="20%"> </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-md-12">
+        <table class="table  table-bordered ">
+          <thead>
+            <tr>
+              <th class="font-bold table-bordered" style="width:8%">NO</th>
+              <th class="font-bold table-bordered" style="width:30%">DESCRIPTION</th>
+              <th class="font-bold table-bordered" style="width:8%">HSNCODE</th>
+              <th class="font-bold table-bordered" style="width:10%">QTY</th>
+              <th class="font-bold table-bordered" style="width:12%">RATE</th>
+              <th class="font-bold table-bordered" style="width:15%">AMOUNT</th>
+            </tr>
+          </thead>
+          <tbody id="table">
+            <tr>
+              <td class="p-0"><input type="number" class="form-control" style="border: none;"></td>
+              <td class="p-0"><input type="text" class="form-control" style="border: none;" /></td>
+              <td class="p-0"><input type="text" style="border: none;" class="form-control" /></td>
+              <td class="p-0"><input type="number" style="border: none;" id="a1" onblur="multi(1)" class="form-control" /></td>
+              <td class="p-0"><input type="number" style="border: none;" id="b1" onblur="multi(1)"class="form-control" /></td>
+              <td class="p-0"><input type="number" style="border: none; background-color: #fff;" id="c1" readOnly class="form-control" /></td>
+            </tr>
+            <tr>
+              <td class="p-0"><input type="number" class="form-control" style="border: none;"></td>
+              <td class="p-0"><input type="text" class="form-control" style="border: none;" /></td>
+              <td class="p-0"><input type="text" style="border: none;" class="form-control" /></td>
+              <td class="p-0"><input type="number" style="border: none;" id="a2" onblur="multi(2)" class="form-control" /></td>
+              <td class="p-0"><input type="number" style="border: none;" id="b2" onblur="multi(2)"class="form-control" /></td>
+              <td class="p-0"><input type="number" style="border: none; background-color: #fff;" id="c2" readOnly class="form-control" /></td>
+            </tr>
+            <tr>
+              <td class="p-0"><input type="number" class="form-control" style="border: none;"></td>
+              <td class="p-0"><input type="text" class="form-control" style="border: none;" /></td>
+              <td class="p-0"><input type="text" style="border: none;" class="form-control" /></td>
+              <td class="p-0"><input type="number" style="border: none;" id="a3" onblur="multi(3)" class="form-control" /></td>
+              <td class="p-0"><input type="number" style="border: none;" id="b3" onblur="multi(3)"class="form-control" /></td>
+              <td class="p-0"><input type="number" style="border: none; background-color: #fff;" id="c3" readOnly class="form-control" /></td>
+            </tr>
+            <tr>
+              <td class="p-0"><input type="number" class="form-control" style="border: none;"></td>
+              <td class="p-0"><input type="text" class="form-control" style="border: none;" /></td>
+              <td class="p-0"><input type="text" style="border: none;" class="form-control" /></td>
+              <td class="p-0"><input type="number" style="border: none;" id="a4" onblur="multi(4)" class="form-control" /></td>
+              <td class="p-0"><input type="number" style="border: none;" id="b4" onblur="multi(4)"class="form-control" /></td>
+              <td class="p-0"><input type="number" style="border: none; background-color: #fff;" id="c4" readOnly class="form-control" /></td>
+            </tr>
+            <tr>
+              <td class="p-0"><input type="number" class="form-control" style="border: none;"></td>
+              <td class="p-0"><input type="text" class="form-control" style="border: none;" /></td>
+              <td class="p-0"><input type="text" style="border: none;" class="form-control" /></td>
+              <td class="p-0"><input type="number" style="border: none;" id="a5" onblur="multi(5)" class="form-control" /></td>
+              <td class="p-0"><input type="number" style="border: none;" id="b5" onblur="multi(5)"class="form-control" /></td>
+              <td class="p-0"><input type="number" style="border: none; background-color: #fff;" id="c5" readOnly class="form-control" /></td>
+            </tr>
+            <tr>
+              <td class="p-0"><input type="number" class="form-control" style="border: none;"></td>
+              <td class="p-0"><input type="text" class="form-control" style="border: none;" /></td>
+              <td class="p-0"><input type="text" style="border: none;" class="form-control" /></td>
+              <td class="p-0"><input type="number" style="border: none;" id="a6" onblur="multi(6)" class="form-control" /></td>
+              <td class="p-0"><input type="number" style="border: none;" id="b6" onblur="multi(6)"class="form-control" /></td>
+              <td class="p-0"><input type="number" style="border: none; background-color: #fff;" id="c6" readOnly class="form-control" /></td>
+            </tr>
+            <tr>
+              <td class="p-0"><input type="number" class="form-control" style="border: none;"></td>
+              <td class="p-0"><input type="text" class="form-control" style="border: none;" /></td>
+              <td class="p-0"><input type="text" style="border: none;" class="form-control" /></td>
+              <td class="p-0"><input type="number" style="border: none;" id="a7" onblur="multi(7)" class="form-control" /></td>
+              <td class="p-0"><input type="number" style="border: none;" id="b7" onblur="multi(7)"class="form-control" /></td>
+              <td class="p-0"><input type="number" style="border: none; background-color: #fff;" id="c7" readOnly class="form-control" /></td>
+            </tr>
+            <tr>
+              <td class="p-0"><input type="number" class="form-control" style="border: none;"></td>
+              <td class="p-0"><input type="text" class="form-control" style="border: none;" /></td>
+              <td class="p-0"><input type="text" style="border: none;" class="form-control" /></td>
+              <td class="p-0"><input type="number" style="border: none;" id="a8" onblur="multi(8)" class="form-control" /></td>
+              <td class="p-0"><input type="number" style="border: none;" id="b8" onblur="multi(8)"class="form-control" /></td>
+              <td class="p-0"><input type="number" style="border: none; background-color: #fff;" id="c8" readOnly class="form-control" /></td>
+            </tr>
+            <tr>
+              <td class="p-0"><input type="number" class="form-control" style="border: none;"></td>
+              <td class="p-0"><input type="text" class="form-control" style="border: none;" /></td>
+              <td class="p-0"><input type="text" style="border: none;" class="form-control" /></td>
+              <td class="p-0"><input type="number" style="border: none;" id="a9" onblur="multi(9)" class="form-control" /></td>
+              <td class="p-0"><input type="number" style="border: none;" id="b9" onblur="multi(9)"class="form-control" /></td>
+              <td class="p-0"><input type="number" style="border: none; background-color: #fff;" id="c9" readOnly class="form-control" /></td>
+            </tr>
+            <tr>
+              <td class="p-0"><input type="number" class="form-control" style="border: none;"></td>
+              <td class="p-0"><input type="text" class="form-control" style="border: none;" /></td>
+              <td class="p-0"><input type="text" style="border: none;" class="form-control" /></td>
+              <td class="p-0"><input type="number" style="border: none;" id="a10" onblur="multi(10)" class="form-control" /></td>
+              <td class="p-0"><input type="number" style="border: none;" id="b10" onblur="multi(10)"class="form-control" /></td>
+              <td class="p-0"><input type="number" style="border: none; background-color: #fff;" id="c10" readOnly class="form-control" /></td>
+            </tr>
+            <tr>
+              <td rowspan="2"></td>
+              <td rowspan="2"></td>
+              <td rowspan="2">Total</td>
+              <td rowspan="2">12</td>
+              <td>Subtotal</td>
+              <td><input type="number" style="border: none; background-color: #fff;" disabled id="subtotal" class="form-control" /></td>
+            </tr>
+            <tr>
+              <td>
+                <span class="text">+CGST</span>
+                <select class="select" onchange="percentageCgst(this.value)">
+                  <option value="0">Select Tax</option>
+                  <option value="1">1%</option>
+                  <option value="2">2%</option>
+                  <option value="3">3%</option>
+                  <option value="4">4%</option>
+                  <option value="5">5%</option>
+                  <option value="6">6%</option>
+                  <option value="7">7%</option>
+                  <option value="8">8%</option>
+                  <option value="9">9%</option>
+                  <option value="10">10%</option>
+                  <option value="11">11%</option>
+                  <option value="12">12%</option>
+                  <option value="13">13%</option>
+                  <option value="14">14%</option>
+                  <option value="15">15%</option>
+                  <option value="16">16%</option>
+                  <option value="17">17%</option>
+                  <option value="18">18%</option>
+                  <option value="19">19%</option>
+                  <option value="20">20%</option>
+                  <option value="21">21%</option>
+                  <option value="22">22%</option>
+                  <option value="23">23%</option>
+                  <option value="24">24%</option>
+                  <option value="25">25%</option>
+                  <option value="26">26%</option>
+                  <option value="27">27%</option>
+                  <option value="28">28%</option>
+                  <option value="29">29%</option>
+                  <option value="30">30%</option>
+                </select>
+              <td ><input type="number" style="border: none; background-color: #fff;" disabled id="CGST" class="form-control" /></td>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="4" rowspan="4">
+                <address>
+                  <div class="text-uppercase font-16 font-medium mb-10">Bank details</div>
+                  <p class="mb-0">Bank Name:PUNJAB NATIONAL BANK (ODHAV-AHMEDABAD)</p>
+                  <p class="mb-0">A/C :- 0811002100022456</p>
+                  <p class="mb-0">IFSC CODE:- PUNB0081100</p>
+                </address>
+              </td>
+              <td>
+                <span class="text">+SGST</a></span>
+                <select class="select" onchange="percentageSgst(this.value)">
+                  <option value="0">Select Tax</option>
+                  <option value="1">1%</option>
+                  <option value="2">2%</option>
+                  <option value="3">3%</option>
+                  <option value="4">4%</option>
+                  <option value="5">5%</option>
+                  <option value="6">6%</option>
+                  <option value="7">7%</option>
+                  <option value="8">8%</option>
+                  <option value="9">9%</option>
+                  <option value="10">10%</option>
+                  <option value="11">11%</option>
+                  <option value="12">12%</option>
+                  <option value="13">13%</option>
+                  <option value="14">14%</option>
+                  <option value="15">15%</option>
+                  <option value="16">16%</option>
+                  <option value="17">17%</option>
+                  <option value="18">18%</option>
+                  <option value="19">19%</option>
+                  <option value="20">20%</option>
+                  <option value="21">21%</option>
+                  <option value="22">22%</option>
+                  <option value="23">23%</option>
+                  <option value="24">24%</option>
+                  <option value="25">25%</option>
+                  <option value="26">26%</option>
+                  <option value="27">27%</option>
+                  <option value="28">28%</option>
+                  <option value="29">29%</option>
+                  <option value="30">30%</option>
+                </select>
+              <td > <input type="number" style="border: none; background-color: #fff;" disabled id="SGST" class="form-control" /></td>
+              </td>
+            </tr>
+            <td>
+              <span class="text">+IGST</span>
+              <select class="select" onchange="percentageIgst(this.value)">
+                <option value="0">Select Tax</option>
+                <option value="1">1%</option>
+                <option value="2">2%</option>
+                <option value="3">3%</option>
+                <option value="4">4%</option>
+                <option value="5">5%</option>
+                <option value="6">6%</option>
+                <option value="7">7%</option>
+                <option value="8">8%</option>
+                <option value="9">9%</option>
+                <option value="10">10%</option>
+                <option value="11">11%</option>
+                <option value="12">12%</option>
+                <option value="13">13%</option>
+                <option value="14">14%</option>
+                <option value="15">15%</option>
+                <option value="16">16%</option>
+                <option value="17">17%</option>
+                <option value="18">18%</option>
+                <option value="19">19%</option>
+                <option value="20">20%</option>
+                <option value="21">21%</option>
+                <option value="22">22%</option>
+                <option value="23">23%</option>
+                <option value="24">24%</option>
+                <option value="25">25%</option>
+                <option value="26">26%</option>
+                <option value="27">27%</option>
+                <option value="28">28%</option>
+                <option value="29">29%</option>
+                <option value="30">30%</option>
+              </select>
+            <td><input type="number" style="border: none; background-color: #fff;" disabled id="IGST" class="form-control" /></td>
+            </td>
+            </tr>
+            <tr>
+              <td>Round OFF</td>
+              <td>18</td>
+            </tr>
+            <tr>
+              <td>TOTAL</td>
+              <td>18</td>
+            </tr>
+            <tr>
+              <td colspan="2">Amount in Word:</td>
+              <td colspan="4">?text</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-md-12">
+        <table class="table table-bordered">
+          <tbody class="table bordered">
+            <tr>
+              <td>
+                <p class="text-uppercase font-20 font-medium mb-10 abc">Terms & Condotion : </p>
+                <p class="mb-0">1.Payment Within 15 Days. </p>
+                <p class="mb-0">2.Goods Once Sold will Not taken Back</p>
+                <p class="mb-0">3.Payment A/C Cheque is Requsted</p>
+                <p class="mb-0">4.SUBJECT TO AHMEDABAD JURISDICTION</p>
+              </td>
+              <td>
+                <h5 class="mb-10 mt-20 text-uppercase font-12 font-medium ">FOR, SHIV WIRE-CUT<br></h5>
+              </td>
+            </tr>
+            <tr>
+              <td> </td>
+              <td>
+                <h5 class="mb-10 mt-20 text-uppercase font-12 font-medium ">(Authorized Singnature)<br></h5>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+    <!-- <div class="form-group ab">
+        <button type="button" onclick="createrow()" class="btn btn-info btn-rounded">
+            <i class="fa fa-plus"></i>
+        </button>
+    </div> -->
+  </div>
+</div>
+<div class="col-md-12">
+  <hr>
+  <div class="text-right">
+    <button class="btn btn-primary" type="submit"> Proceed to payment </button>
+    <button class="btn btn-default btn-outline" type="button" id="print"><span><i class="fa fa-print"></i> Print
+      </span>
+    </button>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,147 @@
+{% extends 'index.html'%}
+{% load static %}
+{% block script %}
+<script src="{% static 'partie/from.js' %}"></script> 
+{% endblock %}
+{% block main %}
+
+<!-- Column -->
+<div class="row">
+    <div class="col-12">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Partie</h4>
+            <h6 class="card-subtitle">You can add or remove partie </h6>        
+            <div class="table-responsive mt-40">
+                <table id="abcdi" class="display nowrap table table-hover table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>NAME</th>
+                            <th>ADDRESS</th>
+                            <th>PHONE NO</th>
+                            <th>GST ID</th>
+                            <th>STATE CODE</th>
+                            <th>INVOICE</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for p in view %}
+                        <tr>
+                            <td>{{ forloop.counter }} </td>
+                            <td>{{ p.name}}</td>
+                            <td>{{ p.address}}</td>
+                            <td>{{ p.phone_no}}</td>
+                            <td>{{ p.GST_NO}}</td>
+                            <td>{{ p.state_code}}</td>
+                            <td>
+                                <button class="btn waves-effect waves-light btn-rounded btn-success color"><a href="/invoicee/?id={{p.id}}">INVOICE</a></button>
+                            </td>
+                            <td>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-secondary " data-toggle="dropdown"><i class="fa fa-align-left"></i></button>
+                                <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" onclick="updateData('{{p.id}}','{{p.name}}','{{p.address}}','{{p.phone_no}}','{{p.GST_NO}}','{{p.state_code}}')">Update</a>
+                                    <a class="dropdown-item" onclick="deleteData('{{p.id}}')">Delete</a>
+                                </div>
+                            </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>#</th>
+                            <th>NAME</th>
+                            <th>ADDRESS</th>
+                            <th>PHONE NO</th>
+                            <th>GST ID</th>
+                            <th>STATE CODE</th>
+                            <th>INVOICE</th>
+                            <th>Action</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>         
+        </div>
+    </div>
+    </div>
+    </div>
+    <!-- <datalist id="partieList">
+        {% for p in view %}    
+        <option value="{{p.partie}}">
+            {{p.partie}}
+        </option>    
+        {% endfor %}  
+    </datalist> -->
+    <div class="form-group ab">
+        <button type="button" onclick="openModel()" class="btn btn-info btn-rounded">
+            <i class="fa fa-plus"></i>
+        </button>
+    </div>
+    <div class="mt-40">
+        <div class="d-flex">
+            <div class="mr-auto">          
+                    <div id="add-contact" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title" id="myModalLabel">Add New partie</h4> 
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>                                
+                                </div>
+                                <div class="modal-body">
+                                    <form autocomplete="off" id="form1" class="form-horizontal form-material"  method="POST">
+                                        {% csrf_token %}
+                                        <div class="form-group row">
+                                            <input type="hidden" value="0" name="partie_id"/>
+                                            <label class="col-sm-3 text-right control-label col-forml-abel">Name:</label>
+                                            <div class="col-md-9">
+                                                <input list="partieList" type="text" name="partie_name"  class="form-control" placeholder="Enter partie name"/>                                            
+                                            </div>                                                        
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 text-right control-label col-forml-abel">Address:</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" name="Address" placeholder="Enter Address"/>                                              
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 text-right control-label col-forml-abel">Phone No:</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" name="Phone_no" placeholder="Enter Phone No"/>                                              
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 text-right control-label col-forml-abel">GST_ID:</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" name="GST_NO" placeholder="Enter GST ID"/>                                              
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 text-right control-label col-forml-abel">State Code:</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" name="state_code" placeholder="Enter State Code"/>                                              
+                                            </div>
+                                        </div>                                                     
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" name="button" class="btn btn-info waves-effect" >
+                                        Add
+                                    </button>
+                                    <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancel</button>
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </form>
+                        </div> 
+                        <!-- /.modal-dialog -->
+                    </div>
+            </div>       
+        </div>
+    </div>
+ 
+{% endblock %}
